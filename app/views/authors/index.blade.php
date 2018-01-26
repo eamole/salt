@@ -4,21 +4,18 @@
 	<title>{{ $title }}</title>
 </head>
 <body>
-	<h1>Authors View from blade controller</h1>
-	the title of this page is {{ $title }}<br/>
-	Name : {{ $name }}<br/>
-	Bio : {{ $bio}} <br/>
-	Data :
-	<table>
+	<h1>{{ $title }}</h1>
+	<table border="1">
 	@foreach($data as $key => $author)	<!-- $value is a record/array of values-->
 		<tr>
-			<td> {{$author->id}}</td>
-			<td> {{$author->name}}</td>
+			<td> {{ HTML::linkRoute('displayAuthor',$author->id,$author->id) }}</td>
+			<td> {{ HTML::linkRoute('displayAuthor',$author->name,$author->id) }}</td>
 			<td> {{$author->bio}}</td>
 			
 		</tr>
 	@endforeach
 	</table>
+	{{ HTML::linkRoute('addAuthor',"Add Author") }}
 </body>
 </html>
 

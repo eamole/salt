@@ -29,7 +29,8 @@ Route::get('/', function()
 // });
 
 Route::get('authors',array(
-	'uses'=>'AuthorsController@index'
+	'uses'=>'AuthorsController@index',
+	'as' =>'getAuthors'
 
 ));
 
@@ -37,6 +38,22 @@ Route::get('authors',array(
 // 	return View::make('authors.author')->with("title","Author View")->with("id", $id);	
 // });
 
-Route::get('author/{id}',array(
-	'uses' => "AuthorsController@displayAuthor"
+Route::get('author/display/{id}',array(
+	'uses' => "AuthorsController@displayAuthor",
+	'as' =>'displayAuthor'
+));
+
+Route::get('author/edit/{id}',array(
+	'uses' => "AuthorsController@editAuthor",
+	'as' =>'editAuthor'
+));
+
+Route::get('author/add',array(
+	'uses' => "AuthorsController@addAuthor",
+	'as' =>'addAuthor'
+));
+
+Route::get('author/delete/{id}',array(
+	'uses' => "AuthorsController@deleteAuthor",
+	'as' =>'deleteAuthor'
 ));
