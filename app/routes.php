@@ -30,7 +30,7 @@ Route::get('/', function()
 
 Route::get('authors',array(
 	'uses'=>'AuthorsController@index',
-	'as' =>'getAuthors'
+	'as' =>'authorsDisplayAll'
 
 ));
 
@@ -39,21 +39,21 @@ Route::get('authors',array(
 // });
 
 Route::get('author/display/{id}',array(
-	'uses' => "AuthorsController@displayAuthor",
-	'as' =>'displayAuthor'
+	'uses' => "AuthorsController@display",
+	'as' =>'authorDisplay'
 ));
 
 Route::get('author/edit/{id}',array(
-	'uses' => "AuthorsController@editAuthor",
-	'as' =>'editAuthor'
+	'uses' => "AuthorsController@edit",
+	'as' =>'authorEdit'
 ));
 
 Route::get('author/add',array(
-	'uses' => "AuthorsController@addAuthor",
-	'as' =>'addAuthor'
+	'uses' => "AuthorsController@add",
+	'as' =>'authorAdd'
 ));
 
 Route::get('author/delete/{id}',array(
-	'uses' => "AuthorsController@deleteAuthor",
-	'as' =>'deleteAuthor'
+	'uses' => "AuthorsController@delete",
+	'as' =>'authorDelete'
 ));

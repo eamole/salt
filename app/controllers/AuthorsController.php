@@ -24,7 +24,7 @@ class AuthorsController extends BaseController {
 		))->with("title","Authors Blade View from controller.index");
 	}
 
-	public function displayAuthor($id) {
+	public function display($id) {
 		// use eloquest to retrieve the recvord/object from Author model and then pass it to View to render the data
 		$author = Author::find($id); 
 
@@ -33,7 +33,7 @@ class AuthorsController extends BaseController {
 		))->with("title","Author Display View from controller.display");	
 	}
 
-	public function editAuthor($id) {
+	public function edit($id) {
 		// use eloquest to retrieve the recvord/object from Author model and then pass it to View to render the data
 		$author = Author::find($id); 
 
@@ -42,14 +42,14 @@ class AuthorsController extends BaseController {
 		))->with("title","Author Edit  View from controller.edit");	
 	}
 
-	public function addAuthor() {
+	public function add() {
 		// use eloquest to retrieve the recvord/object from Author model and then pass it to View to render the data
 
 		return View::make('authors.add',array(
 		))->with("title","Author Edit  View from controller.edit");	
 	}
 
-	public function deleteAuthor($id) {
+	public function delete($id) {
 		// use eloquest to retrieve the recvord/object from Author model and then pass it to View to render the data
 		$author = Author::find($id); 
 

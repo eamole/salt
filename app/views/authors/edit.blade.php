@@ -5,8 +5,7 @@
 </head>
 <body>
 
-	{{ Form::model( 'Author' ) }}
-	{{ Form::open() }}
+	{{ Form::model( $author ) }}
 	
 		{{ Form::label('id','ID  :') }}
 		 	{{ Form::text('id' , $author->id ) }} <br/>
@@ -19,8 +18,7 @@
 	
 	{{ Form::close() }}
 
-	{{ HTML::linkRoute('editAuthor','Edit Author',$author->id) }}
-	{{ HTML::linkRoute('deleteAuthor','Delete Author',$author->id) }}
+
 </body>
 </html>
 
