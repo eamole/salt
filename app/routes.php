@@ -57,3 +57,14 @@ Route::get('author/delete/{id}',array(
 	'uses' => "AuthorsController@delete",
 	'as' =>'authorDelete'
 ));
+
+Route::get('author/deleteConfirm/{id}',array(
+	'uses' => "AuthorsController@deleteConfirm",
+	'as' =>'authorDeleteConfirm'
+));
+// NB : POST method
+Route::post('author/save/{route}',array(
+	'uses' => "AuthorsController@save",
+	'as' =>'authorSave'
+));
+

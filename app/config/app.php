@@ -2,6 +2,9 @@
 
 return array(
 
+	// store debug messages
+	'messages' => array() , 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode

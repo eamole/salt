@@ -15,4 +15,12 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function msg($msg) {
+
+		$messages=Config::get('app.messages');
+		Log::info($msg);
+		$messages[]=$msg;
+		Config::set('app.messages',$messages);
+	}
+
 }

@@ -12,7 +12,7 @@ class Author  extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'authors';
-
+	// protected $table = 'authors'; 	// authors is guessed by ORM
+	protected $fillable = array('id','name','bio','created_at','updated_at');	// block updates to this attribute
 
 }

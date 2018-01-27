@@ -33,12 +33,26 @@
 	</div>
 
 
+	<?php 
+		$urlOk = URL::action("AuthorsController@deleteConfirm",array($author->id));
+		$urlCancel = URL::route('authorDisplay',array($author->id));
+	?>
+
 	<div class="container">
-		{{ HTML::linkRoute('authorEdit','Edit Author',$author->id,  ['class' => 'button']) }}
-		{{ HTML::linkRoute('authorDelete','Delete Author',$author->id , ['class' => 'button']) }}
-		{{ HTML::linkRoute('authorsDisplayAll','Cancel' , null , ['class' => 'button']) }}
+
+		
+		Warning : you are about to delete this record.<br/> Are you sure you wish to proceed?<br/>
+
+	</div>
+	
+	<div class="container">
+
+		<a class='button' href='{{$urlOk}}'>Delete</a>
+		<a class='button' href='{{$urlCancel}}'>Cancel</a>
+
+
 	</div>
 
+
+
 @endsection
-
-

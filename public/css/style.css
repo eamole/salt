@@ -1,0 +1,93 @@
+a.button,
+input[type='submit'] {
+    display : inline-block;
+    background: #4E9CAF;
+  	margin : 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    vertical-align : top ;
+    line-height: inherit;
+    cursor : pointer ;
+
+}
+
+a.button,
+a.button:hover, 
+a.button:visited,
+a.button:link, 
+a.button:active {
+
+    text-decoration: none ;
+
+} 
+
+form, .form {
+  	margin : 10px;
+    padding: 10px;
+    border-radius: 5px;
+	border : 1px solid #4E9CAF;
+
+}
+label , .label{
+
+	display :inline-block ;
+	width : 75px;
+	text-align : right;
+	background-color: #8FBC8F ;
+
+}
+
+.container {
+	margin-top: 10px;
+}
+
+input, textarea, .input {
+	border : 1px solid #4E9CAF;
+    padding: 10px;
+    border-radius: 5px;
+    vertical-align: top;
+    max-width: 50%;
+    margin-left: 10px;
+}
+
+label::after {
+	content : "";
+}
+
+th, td, table {
+
+	border : 1px solid #4E9CAF;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #cce0ff ;
+}
+
+
+td > a , td > a:hover, td > a:visited, td > a:link, td > a:active {
+  display: block;
+  text-decoration: none;
+  cursor :pointer ;
+  vertical-align: top; 
+}
+
+th.id {
+	width: 10%;
+}
+th.name {
+	width: 30%;
+}
+th.bio {
+	width: 60%;
+}
+

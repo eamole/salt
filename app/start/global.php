@@ -1,5 +1,11 @@
 <?php
 
+// a global messages array
+global $messages;
+$messages=Array();
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
