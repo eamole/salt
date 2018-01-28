@@ -10,9 +10,9 @@
 		 	{{ Form::text('id' , $client->id ) }} <br/> 
  -->		
 		<div class='panel'>
-			{{ Form::label('id','ID  :') }}
+<!-- 			{{ Form::label('id','ID  :') }}
 			 	{{ Form::text('id' , $client->id , ['readonly'] )  }} <br/>
-			
+ -->			
 			{{ Form::label('name','Name :') }}
 			 	{{ Form::text('name',$client->name) }} <br/>
 			
@@ -42,10 +42,10 @@
 				{{ Form::text('username',$client->username) }} <br/>
 
 			{{ Form::label('password' , 'Password : ') }}
-				{{ Form::password('password',$client->password) }} <br/>
+				{{ Form::input('password','password',$client->password) }} <br/>
 
 			{{ Form::label('password_confirmation' , 'Confirm : ') }}
-				{{ Form::password('password_confirmation',$client->password) }} <br/>
+				{{ Form::input('password','password_confirmation',$client->password) }} <br/>
 
 		</div>
 		

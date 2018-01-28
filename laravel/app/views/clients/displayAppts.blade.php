@@ -4,33 +4,42 @@
 @section("content")
 
 	<div class="container form">
-		<div class="form-row">
-			<span class="label">
-				ID  : 
-			</span>
-			<span class="input">
-				{{ $client->id }}
-			</span>
-		</div>
-		
-		<div class="form-row">
-			<span class="label">
-				Name : 
-			</span>
-			<span class="input">
-				{{ $client->name }} <br/>
-			</span>
+
+		<div class='panel'>
+
+<!-- 			<div class="form-row">
+				<span class="label">
+					ID  : 
+				</span>
+				<span class="input">
+					{{ $client->id }}
+				</span>
+			</div>
+ -->			
+			<div class="form-row">
+				<span class="label">
+					Name : 
+				</span>
+				<span class="input">
+					{{ $client->name }} <br/>
+				</span>
+			</div>
 		</div>
 
-		<div class="form-row">
-			<span class="label">
-				Therapist : 
-			</span>
-			<span class="input">
-				{{ $therapist }} <br/>
-			</span>
+		<div class='panel'>
+
+			<div class="form-row">
+				<span class="label">
+					Therapist : 
+				</span>
+				<span class="input">
+					{{ HTML::linkRoute('therapistDisplay', $therapist ,$client->therapist_id ) }}<br/>
+				</span>
+			</div>
+
 		</div>
 
+		<br clear='all' />
 
 		<div class="form-row">
 			<span class="label">

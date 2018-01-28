@@ -7,7 +7,7 @@
 
 		<div class="panel">
 
-			<div class="form-row">
+<!-- 			<div class="form-row">
 				<span class="label">
 					ID  : 
 				</span>
@@ -15,7 +15,7 @@
 					{{ $client->id }}
 				</span>
 			</div>
-			
+ -->			
 			<div class="form-row">
 				<span class="label">
 					Name : 
