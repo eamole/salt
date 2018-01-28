@@ -12,7 +12,7 @@
 	
 	<h1>Speech & Language Therapy System</h1>
 
-	{{ $menuBar->asUl() }}
+	{{ $menuBar->asUl(['class' => 'menuBar']) }}
 
 	<h2>{{ $title }}</h2>
 

@@ -42,3 +42,10 @@ Route::post('client/save/{route}',array(
 	'as' =>'clientSave'
 ));
 
+
+Route::get('client/appts/{id}',array(
+	'uses' => "ClientsController@displayAppts",
+	'as' =>'clientDisplayAppts'
+));
+
+

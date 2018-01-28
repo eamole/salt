@@ -41,6 +41,28 @@ class ClientsController extends BaseController {
 		))->with("title","Client Display View from controller.display");	
 	}
 
+	public function displayAppts($id) {
+		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+		$client = Client::find($id); 
+
+		if(!empty($client->therapist)) {
+			$therapist = Therapist::find($client->therapist);
+			$therapist = $therapist->name;
+		} else{
+			$therapist='<not set>';
+		}
+
+
+		$appts = Appt::where('client','=',$client->id)->get();
+
+
+		return View::make('clients.displayAppts',array(
+			'client' => $client,
+			'therapist' =>$therapist,
+			'appts' => $appts,
+		))->with("title","Client Display Appointments View from controller.display");	
+	}
+
 	public function delete($id) {
 		// use eloquest to retrieve the recvord/object from Client model and then pass it to View to render the data
 		$client = Client::find($id); 

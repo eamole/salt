@@ -32,6 +32,7 @@ Route::get('/', function()
 include_once('routes/authors.php');
 include_once('routes/therapists.php');
 include_once('routes/clients.php');
+include_once('routes/appts.php');
 
 
 include_once('views/menu.php');

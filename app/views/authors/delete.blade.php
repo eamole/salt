@@ -38,7 +38,7 @@
 		$urlCancel = URL::route('authorDisplay',array($author->id));
 	?>
 
-	<div class="container">
+	<div class="menuBar">
 
 		
 		Warning : you are about to delete this record.<br/> Are you sure you wish to proceed?<br/>

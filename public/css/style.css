@@ -1,3 +1,28 @@
+h1,
+h2,
+h3 {
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+
+
+.panel {
+    display:inline-block;
+    width: 50%;
+    float: left;
+}
+
+ul.menuBar,
+div.menuBar, 
+span.menuBar {
+  width : 90%;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: #8FBC8F;
+}
+
 ul > li.navbar, ul > li.navbar> a {
   display :inline-block;
   color:white !important;
@@ -74,6 +99,10 @@ select,
   vertical-align: top;
   max-width: 50%;
   margin-left: 10px;
+}
+
+textarea.notes {
+  width:100%;
 }
 
 label::after {

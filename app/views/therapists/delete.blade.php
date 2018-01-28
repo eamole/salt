@@ -62,7 +62,7 @@
 
 	</div>
 	
-	<div class="container">
+	<div class="menuBar">
 
 		<a class='button' href='{{$urlOk}}'>Delete</a>
 		<a class='button' href='{{$urlCancel}}'>Cancel</a>

@@ -33,6 +33,31 @@ class TherapistsController extends BaseController {
 		))->with("title","Therapist Display View from controller.display");	
 	}
 
+
+	public function displayClients($id) {
+		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+		$therapist = Therapist::find($id); 
+
+		$clients = Client::where('therapist','=',$therapist->id)->get();
+
+		return View::make('therapists.displayClients',array(
+			'therapist' => $therapist,
+			'clients' => $clients
+		))->with("title","Therapist Display Clients View from controller.display");	
+	}
+
+	public function displayAppts($id) {
+		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+		$therapist = Therapist::find($id); 
+
+		$appts = Appt::where('therapist','=',$therapist->id)->get();
+
+		return View::make('therapists.displayAppts',array(
+			'therapist' => $therapist,
+			'appts' => $appts,
+		))->with("title","Therapist Display Appointments View from controller.display");	
+	}
+
 	public function edit($id) {
 		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
 		$therapist = Therapist::find($id); 

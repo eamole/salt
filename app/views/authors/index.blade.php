@@ -27,6 +27,8 @@
 			@endforeach
 		</tbody>
 	</table>
-	{{ HTML::linkRoute('authorAdd',"Add Author" , null , ['class' => 'button']) }}
-
+	<div class="menuBar">	
+		{{ HTML::linkRoute('authorAdd',"Add Author" , null , ['class' => 'button']) }}
+	</div>
+	
 @endsection

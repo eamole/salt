@@ -15,7 +15,7 @@
 		{{ Form::label('bio' , 'Bio : ') }}
 			{{ Form::textarea('bio',$author->bio) }} <br/>
 
-		<div class="container">
+		<div class="menuBar">
 			
 			<?php 
 				$urlCancel = URL::route('authorDisplay',array($author->id));

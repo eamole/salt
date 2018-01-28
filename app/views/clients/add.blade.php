@@ -46,7 +46,7 @@
 			$urlCancel = URL::route('clientsDisplayAll');
 		?>
 
-		<span class="container">
+		<span class="menuBar">
 
 			{{ Form::submit("Save Client") }}
 			<a class='button' href='{{$urlCancel}}'>Cancel</a>

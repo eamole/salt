@@ -27,7 +27,7 @@
 		{{ Form::label('password_confirmation' , 'Confirm : ') }}
 			{{ Form::password('password_confirmation',$therapist->password) }} <br/>
 
-		<div class="container">
+		<div class="menuBar">
 			
 			<?php 
 				$urlCancel = URL::route('therapistDisplay',array($therapist->id));

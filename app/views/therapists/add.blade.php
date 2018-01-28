@@ -31,7 +31,7 @@
 			$urlCancel = URL::route('therapistsDisplayAll');
 		?>
 
-		<span class="container">
+		<span class="menuBar">
 
 			{{ Form::submit("Save Therapist") }}
 			<a class='button' href='{{$urlCancel}}'>Cancel</a>

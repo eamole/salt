@@ -31,6 +31,10 @@
 			@endforeach
 		</tbody>
 	</table>
-	{{ HTML::linkRoute('therapistAdd',"Add Therapist" , null , ['class' => 'button']) }}
+	<div class="menuBar">
+
+		{{ HTML::linkRoute('therapistAdd',"Add Therapist" , null , ['class' => 'button']) }}
+	
+	</div>
 
 @endsection

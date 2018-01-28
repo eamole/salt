@@ -20,7 +20,7 @@
 			$urlCancel = URL::route('authorsDisplayAll');
 		?>
 
-		<span class="container">
+		<span class="menuBar">
 
 			{{ Form::submit("Save Author") }}
 			<a class='button' href='{{$urlCancel}}'>Cancel</a>

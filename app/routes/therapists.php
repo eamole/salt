@@ -40,3 +40,14 @@ Route::post('therapist/save/{route}',array(
 	'as' =>'therapistSave'
 ));
 
+Route::get('therapist/clients/{id}',array(
+	'uses' => "TherapistsController@displayClients",
+	'as' =>'therapistDisplayClients'
+));
+
+Route::get('therapist/appts/{id}',array(
+	'uses' => "TherapistsController@displayAppts",
+	'as' =>'therapistDisplayAppts'
+));
+
+

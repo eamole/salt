@@ -33,7 +33,7 @@
 	</div>
 
 
-	<div class="container">
+	<div class="menuBar">
 		{{ HTML::linkRoute('authorEdit','Edit Author',$author->id,  ['class' => 'button']) }}
 		{{ HTML::linkRoute('authorDelete','Delete Author',$author->id , ['class' => 'button']) }}
 		{{ HTML::linkRoute('authorsDisplayAll','Cancel' , null , ['class' => 'button']) }}
