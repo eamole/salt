@@ -10,8 +10,11 @@
 </head>
 <body>
 	
+	<h1>Speech & Language Therapy System</h1>
 
-	<h1>{{ $title }}</h1>
+	{{ $menuBar->asUl() }}
+
+	<h2>{{ $title }}</h2>
 
 
 	<div id="header" class="container">

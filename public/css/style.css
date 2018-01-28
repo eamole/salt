@@ -1,3 +1,18 @@
+ul > li.navbar, ul > li.navbar> a {
+  display :inline-block;
+  color:white !important;
+}
+
+ul > li.navbar:hover > a, 
+ul > li.navbar:visited > a,
+ul > li.navbar:link > a, 
+ul > li.navbar:active > a {
+
+    text-decoration: none ;
+
+} 
+
+ul > li.navbar ,
 a.button,
 input[type='submit'] {
     display : inline-block;
@@ -28,15 +43,19 @@ form, .form {
   	margin : 10px;
     padding: 10px;
     border-radius: 5px;
-	border : 1px solid #4E9CAF;
+    border : 1px solid #4E9CAF;
 
 }
 label , .label{
 
 	display :inline-block ;
-	width : 75px;
+  padding: 10px;
+  margin-bottom :5px;
+	width : 100px;
 	text-align : right;
 	background-color: #8FBC8F ;
+  border : 1px solid #4E9CAF;
+  border-radius: 5px;
 
 }
 
@@ -44,13 +63,17 @@ label , .label{
 	margin-top: 10px;
 }
 
-input, textarea, .input {
-	border : 1px solid #4E9CAF;
-    padding: 10px;
-    border-radius: 5px;
-    vertical-align: top;
-    max-width: 50%;
-    margin-left: 10px;
+input, 
+textarea,
+select, 
+.input {
+  border : 1px solid #4E9CAF;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom :5px;
+  vertical-align: top;
+  max-width: 50%;
+  margin-left: 10px;
 }
 
 label::after {

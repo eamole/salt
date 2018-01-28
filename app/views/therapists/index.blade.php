@@ -11,6 +11,7 @@
 				<th class='name'>Name</th>
 				<th class='phone'>Phone</th>
 				<th class='email'>Email</th>
+				<th class='password'>Password</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,6 +24,7 @@
 					<td> {{ HTML::linkRoute('therapistDisplay', $therapist->name 	, $therapist->id) }}</td>
 					<td> {{ HTML::linkRoute('therapistDisplay', $therapist->phone , $therapist->id) }}</td>
 					<td> {{ HTML::linkRoute('therapistDisplay', $therapist->email , $therapist->id) }}</td>
+					<td> {{ HTML::linkRoute('therapistDisplay', $therapist->password , $therapist->id) }}</td>
 						
 		
 				</tr>

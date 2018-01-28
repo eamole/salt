@@ -22,10 +22,10 @@
 			{{ Form::text('username',$therapist->username) }} <br/>
 
 		{{ Form::label('password' , 'Password : ') }}
-			{{ Form::password('password') }} <br/>
+			{{ Form::password('password',$therapist->password) }} <br/>
 
 		{{ Form::label('password_confirmation' , 'Confirm : ') }}
-			{{ Form::password('password_confirmation') }} <br/>
+			{{ Form::password('password_confirmation',$therapist->password) }} <br/>
 
 		<div class="container">
 			

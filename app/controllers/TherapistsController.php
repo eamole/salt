@@ -69,7 +69,7 @@ class TherapistsController extends BaseController {
 	public function save($route) {
 		// the data weare saving must come from the form
 		
-		if($route=="therpistAdd") {
+		if($route=="therapistAdd") {
 			$rules = array(
 				'name' => 'required|min:5' ,
 				'phone' => 'required|min:5:unique:therapists',
