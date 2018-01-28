@@ -1,7 +1,6 @@
 /bootstrap/compiled.php
 /vendor
 /.phpintel
-/laravel/
 composer.phar
 composer.lock
 .env.*.php
