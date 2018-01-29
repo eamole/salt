@@ -6,16 +6,14 @@
 */
 class Client extends Eloquent {
 
-
-
 	protected $fillable = array('id','name','phone','email','username','password','created_at','updated_at');	
 
 
 	public function therapist() {
-		return $this->belongsTo('Therapist','id');
+		return $this->hasOne('Therapist','id','therapist_id');
 	}
 
 	public function appts() {
-		return $this->hasMany('Appt','client');
+		return $this->hasMany('Appt','client_id' , 'id') ;
 	}	
 }

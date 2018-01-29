@@ -13,10 +13,10 @@
 
 
 
-Route::get('/', function()
+Route::get('/', [ 'as' => 'home' , function()
 {
 	return View::make('home',['title' => 'Home']);
-});
+}]);
 
 // Route::get('authors', function()
 // {

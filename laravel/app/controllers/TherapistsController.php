@@ -17,79 +17,81 @@ class TherapistsController extends BaseController {
 
 	public function index()
 	{	
-		// $data = array( "var1" => "value 1","var2" => "value 2");
-		$data = Therapist::all();
+
+		$therapists = Therapist::all();
 		return View::make('therapists.index',array(
-			'data' => $data
-		))->with("title","Therapists Blade View from controller.index");
+			'therapists' => $therapists
+		))->with("title","Therapists");
 	}
 
 	public function display($id) {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$therapist = Therapist::find($id); 
 
 		return View::make('therapists.display',array(
 			'therapist' => $therapist
-		))->with("title","Therapist Display View from controller.display");	
+		))->with("title","Therapist Display");	
 	}
 
 
 	public function displayClients($id) {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$therapist = Therapist::find($id); 
 
-		$clients = Client::where('therapist_id','=',$therapist->id)->get();
+		$clients = $therapist->clients;
 
 		return View::make('therapists.displayClients',array(
 			'therapist' => $therapist,
 			'clients' => $clients
-		))->with("title","Therapist Display Clients View from controller.display");	
+		))->with("title","Therapist Display Clients");	
 	}
 
 	public function displayAppts($id) {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$therapist = Therapist::find($id); 
 
-		$appts = Appt::where('therapist_id','=',$therapist->id)->get();
+		$appts = $therapist->appts;
 
 		return View::make('therapists.displayAppts',array(
 			'therapist' => $therapist,
 			'appts' => $appts,
-		))->with("title","Therapist Display Appointments View from controller.display");	
+		))->with("title","Therapist Display Appointments");	
 	}
 
 	public function edit($id) {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$therapist = Therapist::find($id); 
 
 		return View::make('therapists.edit',array(
 			'therapist' => $therapist
-		))->with("title","Therapist Edit View from controller.edit");	
+		))->with("title","Therapist Edit");	
 	}
 
 	public function add() {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$therapist = new Therapist;
+
 		return View::make('therapists.add',array(
 			'therapist'=> $therapist
-		))->with("title","Therapist Add View from controller.add");	
+		))->with("title","Therapist Add");	
 	}
 
 	public function delete($id) {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$therapist = Therapist::find($id); 
 
 		return View::make('therapists.delete',array(
 			'therapist' => $therapist
-		))->with("title","Therapist Delete View from controller.delete");	
+		))->with("title","Therapist Delete");	
 	}
 
 	public function deleteConfirm($id) {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$therapist = Therapist::find($id)->delete(); 
 
 		return Redirect::route("therapistsDisplayAll");	
 	}
+
 	//need to pass in the View Route to redirect to (return) on fail
 	public function save($route) {
 		// the data weare saving must come from the form
@@ -129,20 +131,17 @@ class TherapistsController extends BaseController {
 		$therapist->password=Input::get('password');
 	
 
-		Log::info("Therapist data : ".$therapist);
 		// validate inputs - cannot pass $therapist
 		$validator = Validator::make(Input::all() , $rules );
 
 		if( $validator->fails() ) {
-			$this->msg("Validation failed Therapist : {$therapist->id}");
 			// redirect to edit/add route with inputs
 			return Redirect::route($route,array($therapist->id))->withInput()->withErrors($validator);
 			
 		} else {
-			$this->msg("Saving Therapist : ".$therapist->id);
 			// write the data back to database
 			$therapist->save();
-			$this->msg("Redirecting to Therapist : ".$therapist->id );
+
 			return Redirect::route("therapistDisplay",array($therapist->id));
 			
 		}

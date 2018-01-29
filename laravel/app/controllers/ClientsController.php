@@ -17,72 +17,55 @@ class ClientsController extends BaseController {
 
 	public function index()
 	{	
-		// $data = array( "var1" => "value 1","var2" => "value 2");
-		$data = Client::all();
+		$clients = Client::with('therapist')->get();
+
 		return View::make('clients.index',array(
-			'data' => $data
-		))->with("title","Clients Blade View from controller.index");
+			'clients' => $clients
+		))->with("title","Clients");
 	}
 
 	public function display($id) {
-		// use eloquest to retrieve the recvord/object from Client model and then pass it to View to render the data
+
 		$client = Client::find($id); 
 
-		if(!empty($client->therapist_id)) {
-			$therapist = Therapist::find($client->therapist_id);
-			$therapist = $therapist->name;
-		} else{
-			$therapist='<not set>';
-		}
+		$therapist=$client->therapist->name;
 
 		return View::make('clients.display',array(
 			'client' => $client,
 			'therapist' =>$therapist
-		))->with("title","Client Display View from controller.display");	
+		))->with("title","Client Display");	
 	}
 
 	public function displayAppts($id) {
-		// use eloquest to retrieve the recvord/object from Therapist model and then pass it to View to render the data
+
 		$client = Client::find($id); 
 
-		if(!empty($client->therapist_id)) {
-			$therapist = Therapist::find($client->therapist_id);
-			$therapist = $therapist->name;
-		} else{
-			$therapist='<not set>';
-		}
+		$therapist=$client->therapist->name;
 
-
-		$appts = Appt::where('client_id','=',$client->id)->get();
-
+		$appts = $client->appts;
 
 		return View::make('clients.displayAppts',array(
 			'client' => $client,
 			'therapist' =>$therapist,
 			'appts' => $appts,
-		))->with("title","Client Display Appointments View from controller.display");	
+		))->with("title","Client Display Appointments");	
 	}
 
 	public function delete($id) {
-		// use eloquest to retrieve the recvord/object from Client model and then pass it to View to render the data
+
 		$client = Client::find($id); 
 
-		if(!empty($client->therapist_id)) {
-			$therapist = Therapist::find($client->therapist_id);
-			$therapist = $therapist->name;
-		} else{
-			$therapist='<not set>';
-		}
+		$therapist=$client->therapist->name;
 
 		return View::make('clients.delete',array(
 			'client' => $client,
 			'therapist' =>$therapist
-		))->with("title","Client Delete View from controller.delete");	
+		))->with("title","Client Delete");	
 	}
 
 
 	public function edit($id) {
-		// use eloquest to retrieve the recvord/object from Client model and then pass it to View to render the data
+
 		$client = Client::find($id); 
 
 		$therapists = Therapist::lists('name','id');
@@ -90,11 +73,11 @@ class ClientsController extends BaseController {
 		return View::make('clients.edit',array(
 			'client' => $client,
 			'therapists' => $therapists
-		))->with("title","Client Edit View from controller.edit");	
+		))->with("title","Client Edit");	
 	}
 
 	public function add() {
-		// use eloquest to retrieve the recvord/object from Client model and then pass it to View to render the data
+
 		$client = new Client;
 
 		$therapists = Therapist::lists('name','id');
@@ -103,16 +86,17 @@ class ClientsController extends BaseController {
 		return View::make('clients.add',array(
 			'client'=> $client,
 			'therapists' => $therapists
-		))->with("title","Client Add View from controller.add");	
+		))->with("title","Client Add");	
 	}
 
 
 	public function deleteConfirm($id) {
-		// use eloquest to retrieve the recvord/object from Client model and then pass it to View to render the data
+
 		$client = Client::find($id)->delete(); 
 
 		return Redirect::route("clientsDisplayAll");	
 	}
+
 	//need to pass in the View Route to redirect to (return) on fail
 	public function save($route) {
 		// the data weare saving must come from the form
@@ -163,20 +147,19 @@ class ClientsController extends BaseController {
 		$client->password=Input::get('password');
 	
 
-		Log::info("Client data : ".$client);
 		// validate inputs - cannot pass $client
 		$validator = Validator::make(Input::all() , $rules );
 
 		if( $validator->fails() ) {
-			$this->msg("Validation failed Client : {$client->id}");
+
 			// redirect to edit/add route with inputs
 			return Redirect::route($route,array($client->id))->withInput()->withErrors($validator);
 			
 		} else {
-			$this->msg("Saving Client : ".$client->id);
+
 			// write the data back to database
 			$client->save();
-			$this->msg("Redirecting to Client : ".$client->id );
+
 			return Redirect::route("clientDisplay",array($client->id));
 			
 		}

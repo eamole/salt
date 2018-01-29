@@ -27,6 +27,16 @@ Route::get('appt/add/{id?}',array(
 	'as' =>'apptAdd'
 ));
 
+Route::get('appt/add/client/{id}',array(
+	'uses' => "ApptsController@addFromClient",
+	'as' =>'apptAddFromClient'
+));
+
+Route::get('appt/add/therapist/{id}',array(
+	'uses' => "ApptsController@addFromTherapist",
+	'as' =>'apptAddFromTherapist'
+));
+
 Route::get('appt/delete/{id}',array(
 	'uses' => "ApptsController@delete",
 	'as' =>'apptDelete'

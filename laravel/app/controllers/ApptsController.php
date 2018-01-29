@@ -17,84 +17,74 @@ class ApptsController extends BaseController {
 
 	public function index()
 	{	
-		// $data = array( "var1" => "value 1","var2" => "value 2");
-		$data = Appt::all();
+		
+		$appts = Appt::all();
 		return View::make('appts.index',array(
-			'data' => $data
-		))->with("title","Appointments Blade View from controller.index");
+			'appts' => $appts
+		))->with("title","Appointments");
 	}
 
 	public function display($id) {
-		// use eloquest to retrieve the recvord/object from Appt model and then pass it to View to render the data
-		$appt = Appt::find($id); 
 
-		if(!empty($appt->therapist_id)) {
-			$therapist = Therapist::find($appt->therapist_id);
-			$therapist = $therapist->name;
-		} else{
-			$therapist='<not set>';
-		}
+		$appt = Appt::findOrFail($id); 
 
-		if(!empty($appt->client_id)) {
-			$client = Client::find($appt->client_id);
-			$client = $client->name;
-		} else{
-			$client='<not set>';
-		}
+		$client 	= $appt->client->name;
+
+		$therapist 	= $appt->therapist->name;
 
 		return View::make('appts.display',array(
 			'appt' 		=> $appt,
 			'therapist' => $therapist,
 			'client' 	=> $client,
-		))->with("title","Appointment Display View from controller.display");	
+		))->with("title","Appointment Display");	
 	}
 
 	public function delete($id) {
-		// use eloquest to retrieve the recvord/object from Appt model and then pass it to View to render the data
-		$appt = Appt::find($id); 
 
-		// $therapist = $appt->therapist->name;
-		// $client=$appt->client->naame;
+		$appt = Appt::findOrFail($id); 
 
-		if(!empty($appt->therapist_id)) {
-			$therapist = Therapist::find($appt->therapist_id);
-			$therapist = $therapist->name;
-		} else{
-			$therapist='<not set>';
-		}
+		$client 	= $appt->client->name;
 
-		if(!empty($appt->client_id)) {
-			$client = Client::find($appt->client_id);
-			$client = $client->name;
-		} else{
-			$client='<not set>';
-		}
+		$therapist 	= $appt->therapist->name;
 
 		return View::make('appts.delete',array(
 			'appt' 		=> $appt,
 			'therapist' => $therapist,
 			'client' 	=> $client,
-		))->with("title","Appointment Delete View from controller.delete");	
+		))->with("title","Appointment Delete");	
 	}
 
+	public function deleteConfirm($id) {
 
-	public function edit($id) {
-		// use eloquest to retrieve the recvord/object from Appt model and then pass it to View to render the data
+		$appt = Appt::find($id)->delete(); 
+
+		return Redirect::route("apptsDisplayAll");	
+	}
+
+	public function setEditOptions($id=null) {
+
 		$appt = Appt::find($id); 
 
-		$therapists = Therapist::lists('name','id');
+		$therapists = Therapist::lists('name','id');	//    $appt->therapists;
 
-		$clients = Client::lists('name','id');
-
-		return View::make('appts.edit',array(
+		$clients = Client::lists('name','id'); // $appt->clients;
+		
+		return array(
 			'appt' 			=> $appt,
 			'therapists' 	=> $therapists,
 			'clients' 		=> $clients,
-		))->with("title","Appointment Edit View from controller.edit");	
+		);		
 	}
+
+	public function edit($id) {
+
+		return View::make('appts.edit', 
+			$this->setEditOptions($id) 
+		)->with("title","Appointment Edit");	
+	}
+
 	// $id is optiona. If provided, use the client and patient ids
 	public function add($id=null) {
-		// use eloquest to retrieve the recvord/object from Appt model and then pass it to View to render the data
 		
 		$appt = new Appt;
 
@@ -104,24 +94,58 @@ class ApptsController extends BaseController {
 			$appt->therapist_id = $old->therapist_id;
 		} 
 
-		$therapists = Therapist::lists('name','id');
+		$therapists = Therapist::lists('name','id');	//    $appt->therapists;
 
-		$clients = Client::lists('name','id');
+		$clients = Client::lists('name','id'); // $appt->clients;
 
 		return View::make('appts.add',array(
 			'appt'			=> $appt,
 			'therapists' 	=> $therapists,
 			'clients' 		=> $clients,
-		))->with("title","Appointment Add View from controller.add");	
+		))->with("title","Appointment Add");	
+	}
+
+	public function addFromClient($id) {
+
+		$appt = new Appt;
+
+		$client=Client::findOrFail($id);
+
+		$appt->client_id = $id;
+		// default to clients therapist
+		$appt->therapist_id = $client->therapist_id;
+
+		$therapists = Therapist::lists('name','id');	//    $appt->therapists;
+
+		$clients = Client::lists('name','id'); // $appt->clients;
+
+		return View::make('appts.add',array(
+			'appt'			=> $appt,
+			'therapists' 	=> $therapists,
+			'clients' 		=> $clients,
+		))->with("title","Appointment Add");	
+
+	}
+
+	public function addFromTherapist($id) {
+
+		$appt = new Appt;
+
+		$appt->therapist_id = $id;
+
+		$therapists = Therapist::lists('name','id');	//    $appt->therapists;
+
+		$clients = Client::lists('name','id'); // $appt->clients;
+
+		return View::make('appts.add',array(
+			'appt'			=> $appt,
+			'therapists' 	=> $therapists,
+			'clients' 		=> $clients,
+		))->with("title","Appointment Add");	
+
 	}
 
 
-	public function deleteConfirm($id) {
-		// use eloquest to retrieve the recvord/object from Appt model and then pass it to View to render the data
-		$appt = Appt::find($id)->delete(); 
-
-		return Redirect::route("apptsDisplayAll");	
-	}
 	//need to pass in the View Route to redirect to (return) on fail
 	public function save($route) {
 		// the data weare saving must come from the form
@@ -143,45 +167,36 @@ class ApptsController extends BaseController {
 			);
 
 		}
+
 		// create a new Appt oject from inputs
-		//$appt = new Appt(Input::all());
 		if(!empty(Input::get('id'))) {
 			$appt=Appt::find(Input::get('id'));
 		}
 		else {
 			$appt = new Appt;
 		}
+
 		// update object with changes
 		$appt->therapist_id	=Input::get('therapist_id');
 		$appt->client_id	=Input::get('client_id');
 		$appt->date 	=Input::get('date');
 		$appt->start	=Input::get('start');
 		$appt->finish	=Input::get('finish');
-		// Log::info("attended.before : ".$appt->attended);
-		// if(Input::has('attended')) {
-		// 	Log::info("has.attended : true ");
-		// } else {
-		// 	Log::info("has.attended : false ");			
-		// }
 		$appt->attended	=Input::has('attended');
-		// Log::info("attended.after : ".$appt->attended);
 		$appt->notes	=Input::get('notes');
 	
 
-		Log::info("Appt data : ".$appt);
 		// validate inputs - cannot pass $appt
 		$validator = Validator::make(Input::all() , $rules );
 
 		if( $validator->fails() ) {
-			$this->msg("Validation failed Appt : {$appt->id}");
 			// redirect to edit/add route with inputs
 			return Redirect::route($route,array($appt->id))->withInput()->withErrors($validator);
 			
 		} else {
-			$this->msg("Saving Appt : ".$appt->id);
 			// write the data back to database
 			$appt->save();
-			$this->msg("Redirecting to Appt : ".$appt->id );
+
 			return Redirect::route("apptDisplay",array($appt->id));
 			
 		}

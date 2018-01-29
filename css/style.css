@@ -83,6 +83,17 @@ label , .label{
   border-radius: 5px;
 
 }
+span.input {
+
+  min-width : 200px;
+
+}
+span.textarea {
+
+  min-width : 80% ;
+  min-height:100px;
+}
+
 
 .container {
 	margin-top: 10px;
