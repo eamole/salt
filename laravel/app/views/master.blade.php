@@ -7,6 +7,19 @@
 
 	{{ HTML::style('css/style.css') }}
 
+	{{ HTML::style('https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css') }}
+
+
+	<script type="text/javascript">
+		
+		function myLabel(name, text) {
+
+			Form::label(name,text,['class' => 'label']);
+
+		}	
+
+
+	</script>
 </head>
 <body>
 	
@@ -59,6 +72,17 @@
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  
+ 
+   <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+ 	<script type="text/javascript">
+		
+		$(document).ready(function() {
+		    $('table').DataTable();
+		} );
+		
+	</script>
 
 </body>
 </html>
